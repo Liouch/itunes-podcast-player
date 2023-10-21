@@ -45,3 +45,14 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+:root {
+  --bg-color: #161616;
+  --bg-color-lighter: #1a1a1a;
+  --text-color: #707070;
+  --primary-botton-color: #5f5f5f;
+}
+#root {
+  @apply bg-[var(--bg-color)];
+  @apply text-[var(--text-color)];
+}

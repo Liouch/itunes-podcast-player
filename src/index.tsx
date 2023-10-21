@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Root from './routes/root';
+import Search from './infrastructure/views/search';
 
 const router = createBrowserRouter([
   {
@@ -19,14 +20,17 @@ const router = createBrowserRouter([
         element: <Navigate to='/search' />,
       },
       {
-        path: '/search',
-        element: <div>search</div>,
+        path: '/search/',
+        element: <Search />,
+      },
+      {
+        path: '/podcast/:podcastId',
+        element: <div>podCast page</div>,
       },
     ],
-  },
-  {
-    path: '/podcast/:podcastId',
-    element: <div>podCast page</div>,
+    errorElement: (
+      <div>Oops! Sorry an unexpected error has ocurred. Not Found</div>
+    ),
   },
 ]);
 
