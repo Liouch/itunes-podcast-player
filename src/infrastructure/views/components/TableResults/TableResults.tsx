@@ -10,6 +10,7 @@ import { Podcast } from '../../../../domain/models/Podcast';
 import PlayPauseButton from '../PlayPauseButton';
 import PodcastSummary from '../PodcastSummary';
 import PodcastDescription from '../PodcastDescription';
+import PodcastRelease from '../PodcastRelease';
 
 type Props = {
   podcasts?: Podcast[];
@@ -72,7 +73,7 @@ const TableResults = ({ podcasts, headings }: Props) => {
                 <PodcastDescription description={podcast.longDescription} />
               </TableCell>
               <TableCell sx={{ minWidth: '120px' }}>
-                {podcast.releaseDate.toString()}
+                <PodcastRelease date={podcast.releaseDate} />
               </TableCell>
             </TableRow>
           ))}
