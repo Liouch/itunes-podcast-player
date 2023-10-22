@@ -51,6 +51,7 @@ h6 {
   --bg-color-lighter: #1a1a1a;
   --text-color: #707070;
   --primary-botton-color: #5f5f5f;
+  --secondary-botton-color: #5c67de;
 }
 #root {
   @apply bg-[var(--bg-color)];

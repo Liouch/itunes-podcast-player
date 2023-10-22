@@ -6,7 +6,7 @@ export interface Podcast {
   artistName: string;
   collectionName: string;
   trackName: string;
-  releaseDate: Date;
+  releaseDate: Date | string;
   primaryGenreName: string;
   artworkUrl600: string;
   longDescription?: string;
