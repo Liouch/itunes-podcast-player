@@ -8,6 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Podcast } from '../../../../domain/models/Podcast';
 import PlayPauseButton from '../PlayPauseButton';
+import PodcastSummary from '../PodcastSummary';
+import PodcastDescription from '../PodcastDescription';
 
 type Props = {
   podcasts?: Podcast[];
@@ -75,12 +77,17 @@ const TableResults = ({ podcasts, headings }: Props) => {
               <TableCell
                 sx={{ minWidth: '75px', padding: '0', textAlign: 'center' }}
               >
-                <PlayPauseButton size='small' icon='play' />
+                <PlayPauseButton size='small' icon='pause' />
               </TableCell>
-              <TableCell>{podcast.artistName}</TableCell>
+              <TableCell sx={{ minWidth: '400px', paddingRight: '60px' }}>
+                <PodcastSummary
+                  media={podcast.artworkUrl600}
+                  artistName={podcast.artistName}
+                  trackName={podcast.trackName}
+                />
+              </TableCell>
               <TableCell>
-                {podcast.longDescription ||
-                  'Discovering your true passion about podcasts and find out what you like'}
+                <PodcastDescription description={podcast.longDescription} />
               </TableCell>
               <TableCell>{podcast.releaseDate.toString()}</TableCell>
             </TableRow>
