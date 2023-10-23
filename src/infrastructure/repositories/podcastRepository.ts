@@ -40,6 +40,17 @@ export const podcastRepository = (): PodcastRepository => ({
     }
   },
 
+  getPodcastListSorted: (
+    podcasts: Podcast[],
+    sortField: keyof Podcast | null
+  ) => {
+    return sortField !== null
+      ? [...podcasts].sort((a: Podcast, b: Podcast) =>
+          a[sortField]! > b[sortField]! ? 1 : -1
+        )
+      : podcasts;
+  },
+
   getPodcastColection: async (id) => {
     try {
       const response = await fetch(

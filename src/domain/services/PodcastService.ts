@@ -9,4 +9,7 @@ export const podcastService = (
   getPodcastColection: (id) => {
     return repository.getPodcastColection(id);
   },
+  getPodcastListSorted: (podcast, sortField) => {
+    return repository.getPodcastListSorted(podcast, sortField);
+  },
 });
