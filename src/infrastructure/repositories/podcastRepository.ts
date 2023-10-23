@@ -33,6 +33,7 @@ export const podcastRepository = (): PodcastRepository => ({
           primaryGenreName: podcastDTO.primaryGenreName,
           artworkUrl600: podcastDTO.artworkUrl600,
           longDescription: podcastDTO?.longDescription,
+          trackTimeMillis: podcastDTO.trackTimeMillis,
         })
       );
     } catch (error) {
@@ -77,6 +78,7 @@ export const podcastRepository = (): PodcastRepository => ({
           primaryGenreName: podcastDTO.primaryGenreName,
           artworkUrl600: podcastDTO.artworkUrl600,
           longDescription: podcastDTO?.longDescription,
+          trackTimeMillis: podcastDTO.trackTimeMillis,
         })
       );
     } catch (error) {

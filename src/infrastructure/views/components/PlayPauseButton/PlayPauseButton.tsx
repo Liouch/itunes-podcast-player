@@ -1,9 +1,13 @@
 import { IconButton } from '@mui/material';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseIcon from '@mui/icons-material/Pause';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import ReplayIcon from '@mui/icons-material/Replay';
 
 type Props = {
-  icon: 'play' | 'pause';
+  icon: 'play' | 'pause' | 'shuffle' | 'skipPrevious' | 'skipNext' | 'replay';
   size: 'small' | 'large';
   onClick?: () => void;
 };
@@ -11,14 +15,11 @@ type Props = {
 const PlayPauseButton = ({ icon, size }: Props) => {
   const sizes = {
     small: 'text-4xl',
-    large: 'text-5xl',
+    large: 'md:text-3xl lg:text-4xl xl:text-5xl',
   };
   const icons = {
     play: (
-      <PlayArrowRoundedIcon
-        className={`${sizes[size]}`}
-        data-testid='playIcon'
-      />
+      <PlayArrowRoundedIcon className={sizes[size]} data-testid='playIcon' />
     ),
     pause: (
       <PauseIcon
@@ -26,13 +27,25 @@ const PlayPauseButton = ({ icon, size }: Props) => {
         data-testid='pauseIcon'
       />
     ),
+    shuffle: <ShuffleIcon className={sizes[size]} data-testid='shuffleIcon' />,
+    skipPrevious: (
+      <SkipPreviousIcon
+        className={sizes[size]}
+        data-testid='skipPreviousIcon'
+      />
+    ),
+    skipNext: (
+      <SkipNextIcon className={sizes[size]} data-testid='skipNextIcon' />
+    ),
+
+    replay: <ReplayIcon className={sizes[size]} data-testid='replayIcon' />,
   };
   return (
     <IconButton
       aria-label={icon}
       size='large'
       // onClick={onHandleClick}
-      className='text-white'
+      className='text-white md:p-1 lg:p-2 xl:p-4'
       data-testid='PlayPauseButton'
     >
       {icons[icon]}

@@ -1,6 +1,6 @@
 import { StyledEngineProvider } from '@mui/material/styles';
 import './App.css';
-import PodCastPlayer from './components/Podcast';
+import PodCastPlayer from './components/PodcastPlayer';
 import { Outlet } from 'react-router-dom';
 
 function App() {

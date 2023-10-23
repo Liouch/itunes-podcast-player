@@ -15,7 +15,7 @@ const PodcastSummary = ({
 }: Props) => {
   const imgSize = {
     small: '60px',
-    large: '150px',
+    large: '110px',
   };
   const imgProps = {
     width: isPodcastPlayer ? imgSize.large : imgSize.small,

@@ -100,11 +100,11 @@ const TableResults = ({ podcasts, headings }: Props) => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell
-                sx={{ minWidth: '75px', padding: '0', textAlign: 'center' }}
+                sx={{ width: '75px', padding: '0', textAlign: 'center' }}
               >
-                <PlayPauseButton size='small' icon='pause' />
+                <PlayPauseButton size='small' icon='play' />
               </TableCell>
-              <TableCell sx={{ minWidth: '400px', paddingRight: '60px' }}>
+              <TableCell sx={{ width: '400px', paddingRight: '60px' }}>
                 <PodcastSummary
                   media={podcast.artworkUrl600}
                   artistName={podcast.artistName}
@@ -114,7 +114,7 @@ const TableResults = ({ podcasts, headings }: Props) => {
               <TableCell sx={{ paddingRight: '60px' }}>
                 <PodcastDescription description={podcast.longDescription} />
               </TableCell>
-              <TableCell sx={{ minWidth: '120px' }}>
+              <TableCell sx={{ width: '120px' }}>
                 <PodcastRelease date={podcast.releaseDate} />
               </TableCell>
             </TableRow>
