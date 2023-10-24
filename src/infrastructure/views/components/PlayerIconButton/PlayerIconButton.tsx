@@ -12,7 +12,7 @@ type Props = {
   onClick?: () => void;
 };
 
-const PlayPauseButton = ({ icon, size }: Props) => {
+const PlayerIconButton = ({ icon, size, onClick }: Props) => {
   const sizes = {
     small: 'text-4xl',
     large: 'md:text-3xl lg:text-4xl xl:text-5xl',
@@ -44,13 +44,13 @@ const PlayPauseButton = ({ icon, size }: Props) => {
     <IconButton
       aria-label={icon}
       size='large'
-      // onClick={onHandleClick}
+      onClick={onClick}
       className='text-white md:p-1 lg:p-2 xl:p-4'
-      data-testid='PlayPauseButton'
+      data-testid='PlayerIconButton'
     >
       {icons[icon]}
     </IconButton>
   );
 };
 
-export default PlayPauseButton;
+export default PlayerIconButton;
