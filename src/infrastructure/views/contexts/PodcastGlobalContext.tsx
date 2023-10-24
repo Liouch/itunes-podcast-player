@@ -10,11 +10,13 @@ import { GlobalState } from '../../../domain/models/GlobalState';
 
 type PodcastGlobalProviderProps = { children: React.ReactNode };
 
-type PodcastContextType = {
+export type PodcastContextType = {
   podcastsGlobalInfo: GlobalState;
   setPodcastsGlobalInfo: Dispatch<SetStateAction<GlobalState>>;
 };
-const PodcastContext = createContext<PodcastContextType | undefined>(undefined);
+export const PodcastContext = createContext<PodcastContextType | undefined>(
+  undefined
+);
 
 const usePodcast = (): PodcastContextType => {
   const context = useContext(PodcastContext);
