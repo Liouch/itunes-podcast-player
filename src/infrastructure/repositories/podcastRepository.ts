@@ -1,3 +1,4 @@
+import { GlobalState } from '../../domain/models/GlobalState';
 import { Podcast } from '../../domain/models/Podcast';
 import { PodcastRepository } from '../../domain/repositories/PodcastRepository';
 import { PodcastDTO } from '../../infrastructure/http/dto/PodcastDTO';
@@ -51,7 +52,6 @@ export const podcastRepository = (): PodcastRepository => ({
         )
       : podcasts;
   },
-
   getPodcastColection: async (id) => {
     try {
       const response = await fetch(
@@ -84,5 +84,15 @@ export const podcastRepository = (): PodcastRepository => ({
     } catch (error) {
       console.log('There was an error', error);
     }
+  },
+  setPlayPauseTrack: (podcastsGlobalInfo: GlobalState, trackId: number) => {
+    const newTrackToPlay = trackId !== podcastsGlobalInfo.activeTrackId;
+    return {
+      ...podcastsGlobalInfo,
+      activeTrackId: trackId,
+      isTrackPlaying: newTrackToPlay
+        ? true
+        : !podcastsGlobalInfo.isTrackPlaying,
+    };
   },
 });

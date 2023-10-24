@@ -10,5 +10,5 @@ export interface Podcast {
   primaryGenreName: string;
   artworkUrl600: string;
   longDescription?: string;
-  trackTimeMillis?: number;
+  trackTimeMillis: number;
 }

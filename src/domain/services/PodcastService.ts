@@ -12,4 +12,7 @@ export const podcastService = (
   getPodcastListSorted: (podcast, sortField) => {
     return repository.getPodcastListSorted(podcast, sortField);
   },
+  setPlayPauseTrack: (podcastsGlobalInfo, trackId) => {
+    return repository.setPlayPauseTrack(podcastsGlobalInfo, trackId);
+  },
 });

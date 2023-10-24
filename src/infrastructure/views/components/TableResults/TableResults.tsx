@@ -7,13 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Podcast } from '../../../../domain/models/Podcast';
-import PlayPauseButton from '../PlayPauseButton';
+import PlayerIconButton from '../PlayerIconButton';
 import PodcastSummary from '../PodcastSummary';
 import PodcastDescription from '../PodcastDescription';
 import PodcastRelease from '../PodcastRelease';
 import TableSort from './TableSort';
 import { podcastService } from '../../../../domain/services/PodcastService';
 import { podcastRepository } from '../../../repositories/podcastRepository';
+import { usePodcast } from '../../contexts/PodcastGlobalContext';
 
 type Props = {
   podcasts: Podcast[];
@@ -53,9 +54,24 @@ const tableHeadings: TableHeadings = {
 
 const TableResults = ({ podcasts, headings }: Props) => {
   const [sortField, setSortField] = useState<keyof Podcast | null>(null);
+  const { podcastsGlobalInfo, setPodcastsGlobalInfo } = usePodcast();
 
   const onSort = (field: keyof Podcast) => {
     setSortField(field);
+  };
+
+  const onHandleClick = (trackId: number) => {
+    const updatedPodcastGlobalInfo = podcastService(
+      podcastRepository()
+    ).setPlayPauseTrack(podcastsGlobalInfo, trackId);
+    setPodcastsGlobalInfo(updatedPodcastGlobalInfo);
+  };
+
+  const isTrackPlaying = (trackId: number) => {
+    return (
+      podcastsGlobalInfo.activeTrackId === trackId &&
+      podcastsGlobalInfo.isTrackPlaying
+    );
   };
 
   const sortedPodcasts: Podcast[] = useMemo(() => {
@@ -102,7 +118,11 @@ const TableResults = ({ podcasts, headings }: Props) => {
               <TableCell
                 sx={{ width: '75px', padding: '0', textAlign: 'center' }}
               >
-                <PlayPauseButton size='small' icon='play' />
+                <PlayerIconButton
+                  size='small'
+                  icon={isTrackPlaying(podcast.trackId) ? 'pause' : 'play'}
+                  onClick={() => onHandleClick(podcast.trackId)}
+                />
               </TableCell>
               <TableCell sx={{ width: '400px', paddingRight: '60px' }}>
                 <PodcastSummary

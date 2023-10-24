@@ -1,3 +1,4 @@
+import { GlobalState } from '../models/GlobalState';
 import { Podcast } from '../models/Podcast';
 
 export interface PodcastRepository {
@@ -7,4 +8,8 @@ export interface PodcastRepository {
     podcast: Podcast[],
     sortField: keyof Podcast | null
   ) => Podcast[];
+  setPlayPauseTrack: (
+    podcastsGlobalInfo: GlobalState,
+    trackId: number
+  ) => GlobalState;
 }
